@@ -1,0 +1,28 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+
+.scores {
+  font-size: 150%;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.cover {
+  font-size: 150%;
+  display: block;
+  text-align: center;
+}
+
+button {
+font-size: 150%;
+}
