@@ -55,6 +55,22 @@ var questions = [
   }];
 
 var start = document.querySelector("#start");
+var cover = document.querySelector(".cover");
+var quiz = document.querySelector(".quiz");
+var scoreForm = document.querySelector(".scoreForm");
+var scoreCard = document.querySelector(".scoreCard");
+var corAns = document.querySelector(".checkedAnswer");
+var initials1 = document.querySelector("#initials");
+var scoreButton = document.querySelector("#scoreButton");
+var closeCard = document.querySelector(".closeCard");
+var closeScores = document.querySelector("#closeScores");
+var time = document.querySelector("#timer");
+var timer;
+var timeRem = 100;
+var initStore = "";
+var initStoreFull = JSON.parse(localStorage.getItem("initStoreFull"));
+var scores = 0;
+var endgame = false;
 
 
 
@@ -62,8 +78,8 @@ var start = document.querySelector("#start");
 var i = 0;
 
 function showQuest() {
-  console.log("!!!!!");
-  if (i < questions.length) {
+  console.log("showQuest");
+  if (i < questions.length && !endgame) {
     // console.log(i);
     var quest = document.querySelector("#question");
     quest.textContent = questions[i].question;
@@ -74,8 +90,30 @@ function showQuest() {
     check();
   } else {
     console.log("stop");
+    quiz.style.display = "none";
+    scoreForm.style.display = "flex";
   }
 }
+
+
+
+function startTime() {
+  // Sets timer
+  timer = setInterval(function() {
+    if (timeRem > 0) {
+      timeRem--;
+      time.textContent = timeRem;
+      // Tests if win condition is met
+    } else {
+        // Clears interval and stops timer
+        endgame = true
+        showQuest();
+      }
+    }, 1000);
+    // Tests if time has run out
+    
+}
+
 
 
 
@@ -85,30 +123,102 @@ function check() {
     var element = event.target;
     var num = parseFloat(element.dataset.number);
     var cor = questions[i].correct;
-    console.log("correct=", cor);
-    console.log("i=",i);
-    console.log(num, "answer");
-    console.log(cor, "correct");
+    
     if (num === cor) {
-      console.log("right")
+          corAns.textContent = "Correct!"
+          corAns.style.background = "green";
+      scores = scores + 10;
     } else {
-      console.log("wrong")
+      console.log("wrong");
+      corAns.textContent = "Wrong!"
+      corAns.style.background = "red";
+      scores = scores - 2;
+      
     }
     event.stopPropagation();
     event.bubbles = false;
     i++;
     showQuest();
-
-  }, {once: true});
+    console.log("🚀 ~ file: script.js:82 ~ scores:", scores);
+  }, { once: true });
 };
 
 var cor = questions[i].correct;
-console.log("correct=", cor);
+
+
+
+function storeScores() {
+  var initStore1 = localStorage.getItem("initStore");
+  initStore = (initStore1 + " - " + scores);
+  initStoreFull.push(initStore);
+  localStorage.setItem("initStoreFull", JSON.stringify(initStoreFull));
+}
+
+
+scoreForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  var initials = initials1.value.trim();
+  console.log("🚀 ~ file: script.js:137 ~ scoreForm.addEventListener ~ initials:", JSON.stringify(initials))
+  JSON.stringify(initials);
+  // Return from function early if submitted todoText is blank
+  if (initials === "") {
+    alert("Please, enter initials");
+    return;
+  }
+
+  // Add new todoText to todos array, clear the input
+  
+  initials1.value = "";
+ // Store updated todos in localStorage, re-render the list
+ localStorage.setItem("initStore", initials); 
+ scoreForm.style.display = "none";
+ alert("Refresh page, please");
+ storeScores();
+ });
+
+
 
 function play() {
   start.addEventListener("click", function () {
+    cover.style.display = "none";
+    quiz.style.display = "flex";
+    // scoreForm.style.display = "none";
+
     showQuest();
-    // console.log("8");
+    startTime();
   })
 };
+
+
+scoreButton.addEventListener("click", function ScoresTable(event) {
+  // Clear todoList element and update todoCountSpan
+  event.preventDefault();
+  var scoresT = JSON.parse(localStorage.getItem("initStoreFull"));
+  closeScores.style.display = "flex";
+
+  // Render a new li for each todo
+  for (var i = 0; i < scoresT.length; i++) {
+    
+    var li = document.createElement("li");
+    li.textContent = scoresT[i];
+    
+
+    
+
+    // li.appendChild(scoreCard);
+    scoreCard.appendChild(li);
+  }
+})
+
+closeScores.addEventListener("click", function closeSc(event){
+  event.preventDefault();
+  // scoreCard.children.remove();
+  closeScores.style.display = "none"
+        scoreCard.innerHTML = "";
+      
+    
+})
+
+
 play();

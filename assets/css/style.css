@@ -23,6 +23,46 @@
   text-align: center;
 }
 
-button {
+.quiz {
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: start;
+  align-content: center;
+}
+
+.scoreForm {
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+#start {
 font-size: 150%;
+}
+
+#initialsForm {
+  margin: 40px;
+  font-size: 150%;
+}
+
+.submit {
+  font-size: 120%;
+}
+
+.scoreCard {
+  display: flex;
+  flex-direction: column;
+}
+
+#closeScores {
+  display: none;
 }

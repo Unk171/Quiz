@@ -9,20 +9,22 @@
 </head>
 
 <body>
-<header >
-  <nav class="scores">
-        <a href="">scores</a>
-        <a href="">Timer</a>
-  </nav>
-</header>
-<section class="wrapper">
-  <div class="cover">
-    <h1>Coding Quiz Challenge</h1>
-    <p>
-      To answer questions press "Start"
-    </p>
-    <button id="start">Start</button>
-  </div>
+  <header>
+    <nav class="scores">
+      <button id="scoreButton">Scores</button>
+      <div>
+<p>Time remainig: <span id="timer"></span></p>
+      </div>
+    </nav>
+  </header>
+  <section class="wrapper">
+    <div class="cover">
+      <h1>Coding Quiz Challenge</h1>
+      <p>
+        To answer questions press "Start"
+      </p>
+      <button id="start">Start</button>
+    </div>
   </section>
   <section class="quiz">
     <h2 class="questionT" id="question"></h2>
@@ -32,17 +34,17 @@
       <li class="answer" data-number="2"></li>
       <li class="answer" data-number="3"></li>
     </ul>
-    <p>
-
-    </p>
+    <p class="checkedAnswer"></p>
   </section>
   <div class="scoreForm">
-
+    <form id="initialsForm" method="POST">
+      <label for="initials">Add initials and press "Enter": </label>
+      <input type="text" name="initials" id="initials" />
+    </form>
   </div>
-  <div class="scores">
-    <ul>
-
-    </ul>
+  <div>
+    <ul class="scoreCard"></ul>
+    <button id="closeScores">Close</button>
   </div>
   <script src="./assets/js/script.js"></script>
 </body>
