@@ -70,9 +70,14 @@ var timer;
 var timeRem = 100;
 var initStore = "";
 var initStoreFull = JSON.parse(localStorage.getItem("initStoreFull"));
+console.log("🚀 ~ file: script.js:74 ~ initStoreFull:", initStoreFull)
 var scores = 0;
 var endgame = false;
 var i = 0;
+
+if (initStoreFull === null) {
+  initStoreFull = [0];
+}
 
 // questions render 
 function showQuest() {
@@ -144,8 +149,6 @@ function storeScores() {
 scoreForm.addEventListener("submit", function (event) {
   event.preventDefault();
   var initials = initials1.value.trim();
-  console.log("🚀 ~ file: script.js:137 ~ scoreForm.addEventListener ~ initials:", JSON.stringify(initials))
-  JSON.stringify(initials);
   if (initials === "") {
     alert("Please, enter initials");
     return;
@@ -171,6 +174,9 @@ function play() {
 scoreButton.addEventListener("click", function ScoresTable(event) {
   event.preventDefault();
   var scoresT = JSON.parse(localStorage.getItem("initStoreFull"));
+  if (scoresT === null) {
+    scoresT = [0];
+  }
   closeScores.style.display = "flex";
   for (var i = 0; i < scoresT.length; i++) {
     var li = document.createElement("li");
