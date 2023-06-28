@@ -1,5 +1,4 @@
 
-// www.tutorialspoint.com
 
 // quiz qustions 
 var questions = [
