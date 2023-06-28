@@ -1,8 +1,4 @@
-/* * {
-  box-sizing: border-box;
-} */
-
-
+/* header  */
 .scores {
   font-size: 150%;
   display: flex;
@@ -10,19 +6,21 @@
   margin: 30px;
 }
 
+/* main place  */
 .wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-
+/* start text  */
 .cover {
   font-size: 150%;
   display: block;
   text-align: center;
 }
 
+/* quiz questions & answers  */
 .quiz {
   display: none;
   flex-direction: column;
@@ -39,14 +37,12 @@
   align-content: center;
 }
 
+/* score input  */
 .scoreForm {
   display: none;
   flex-direction: column;
   text-align: center;
   justify-content: center;
-}
-#start {
-font-size: 150%;
 }
 
 #initialsForm {
@@ -54,15 +50,22 @@ font-size: 150%;
   font-size: 150%;
 }
 
+/* start button  */
+#start {
+  font-size: 150%;
+}
+
 .submit {
   font-size: 120%;
 }
 
+/* scores table  */
 .scoreCard {
   display: flex;
   flex-direction: column;
 }
 
+/* score close button  */
 #closeScores {
   display: none;
 }

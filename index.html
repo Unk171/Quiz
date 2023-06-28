@@ -10,22 +10,28 @@
 
 <body>
   <header>
+    <!-- scores button  -->
     <nav class="scores">
       <button id="scoreButton">Scores</button>
+      <!-- timer  -->
       <div>
-<p>Time remainig: <span id="timer"></span></p>
+        <p>Time remainig: <span id="timer"></span></p>
       </div>
     </nav>
   </header>
+  <!-- main space  -->
   <section class="wrapper">
+    <!-- start text  -->
     <div class="cover">
       <h1>Coding Quiz Challenge</h1>
       <p>
         To answer questions press "Start"
       </p>
+      <!-- start button  -->
       <button id="start">Start</button>
     </div>
   </section>
+  <!-- quiz questions and answers  -->
   <section class="quiz">
     <h2 class="questionT" id="question"></h2>
     <ul class="answers">
@@ -34,14 +40,17 @@
       <li class="answer" data-number="2"></li>
       <li class="answer" data-number="3"></li>
     </ul>
+    <!-- result  -->
     <p class="checkedAnswer"></p>
   </section>
+  <!-- scores form  -->
   <div class="scoreForm">
     <form id="initialsForm" method="POST">
       <label for="initials">Add initials and press "Enter": </label>
       <input type="text" name="initials" id="initials" />
     </form>
   </div>
+  <!-- scores table  -->
   <div>
     <ul class="scoreCard"></ul>
     <button id="closeScores">Close</button>
