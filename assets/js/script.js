@@ -74,6 +74,7 @@ console.log("🚀 ~ file: script.js:74 ~ initStoreFull:", initStoreFull)
 var scores = 0;
 var endgame = false;
 var i = 0;
+var mistake = false;
 
 if (initStoreFull === null) {
   initStoreFull = [0];
@@ -103,6 +104,10 @@ function startTime() {
     if (timeRem > 0) {
       timeRem--;
       time.textContent = timeRem;
+      if (mistake){
+        timeRem = timeRem - 10;
+        mistake = false;
+      }
     } else {
       endgame = true
       showQuest();
@@ -125,7 +130,8 @@ function check() {
       console.log("wrong");
       corAns.textContent = "Wrong!"
       corAns.style.background = "red";
-      scores = scores - 2;
+      timeRem = timeRem - 5;
+      mistake = true;
     }
     event.stopPropagation();
     event.bubbles = false;
