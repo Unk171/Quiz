@@ -30,7 +30,7 @@ N/A
 
 ## Features
 
-Scores with initials remain in memory.
+Scores with initials remain in memory. If anwer wrong - time substracted
 
 
 ## Links
